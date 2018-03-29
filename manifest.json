@@ -11,7 +11,7 @@
   ],
   "connectors": {
     "iframe": {
-      "url": "./src/views/index.html"
+      "url": "./index.html"
     }
   }
 }

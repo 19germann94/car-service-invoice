@@ -11,10 +11,10 @@ TrelloPowerUp.initialize({
             text: 'Estimate Size',
             callback: function (t) {
                 return t.popup({
-                    title: "Estimation",
-                    url: 'estimate.html',
+                  title: "Estimation",
+                  url: 'estimate.html'
                 });
             }
         }];
-    },
+    }
 });
