@@ -7,14 +7,16 @@
     "start": "node server.js"
   },
   "dependencies": {
+    "compression": "1.6.2",
+    "cors": "^2.8.3",
     "express": "^4.15.2",
-    "cors": "^2.8.3"
+    "pdfkit": "^0.8.3"
   },
   "engines": {
     "node": "6.10.x"
   },
   "repository": {
-    "url": "https://glitch.com/edit/#!/trello-power-up-skeleton"
+    "url": "https://github.com/19germann94/car-service-invoice"
   },
   "license": "MIT",
   "keywords": [
