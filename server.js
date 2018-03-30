@@ -16,7 +16,7 @@ app.post('/pdf', (request, response) => {
   response.setHeader('Content-Length', stat.size);
   response.setHeader('Content-Type', 'application/pdf');
   response.setHeader('Content-Disposition', 'attachment; filename=lorem.pdf');
-  file.pipe(response);
+  response.send(file);
   //pdfGenerator.generatePDF(request)
 
 });

@@ -10,8 +10,14 @@ const onPDFButtonClick = function () {
     method: "POST",
     contentType: "application/json",
     data: JSON.stringify({data: "bla"}),
-    success: function (result) {
-      console.log('received ', result);
+    success: function (pdf) {
+      console.log('received ', pdf);
+      const url = window.URL.createObjectURL(new Blob([pdf]));
+      const link = document.createElement('a');
+      link.href = url;
+      link.setAttribute('download', 'invoice.pdf');
+      document.body.appendChild(link);
+      link.click();
     },
     error: function (error) {
       console.error(error);
