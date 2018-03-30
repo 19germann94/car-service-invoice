@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const compression = require('compression');
-const pdfGenerator = require('src/js/PDFGenerator');
+const pdfGenerator = require('PDFGenerator');
 
 const app = express();
 app.use(cors({origin: '*'}));
