@@ -1,20 +1,27 @@
 const express = require('express');
 const cors = require('cors');
+const compression = require('compression');
+const pdfGenerator = require('./PDFGenerator');
+const fs = require('fs');
 
 const app = express();
-
-// your manifest must have appropriate CORS headers, you could also use '*'
 app.use(cors({origin: '*'}));
+app.use(compression());
+app.use(express.static('src'));
 
-// http://expressjs.com/en/starter/static-files.html
-app.use(express.static('./'));
+app.get('/', (request, response) => response.sendFile(__dirname + '/src/static/index.html'));
+app.get('/pdf', (request, response) => {
+  const file = fs.createReadStream('./loremipsum.pdf');
+  const stat = fs.statSync('./loremipsum.pdf');
+  response.setHeader('Content-Length', stat.size);
+  response.setHeader('encoding', 'binary');
+  response.setHeader('Content-Type', 'application/pdf');
+  response.setHeader('Content-Disposition', 'application; filename=\"loremipsum.pdf\"');
+  file.pipe(response);
+  //pdfGenerator.generatePDF(request)
 
-// http://expressjs.com/en/starter/basic-routing.html
-app.get("*", function (request, response) {
-    response.sendFile(__dirname + '/index.html');
 });
 
-// listen for requests :)
 const listener = app.listen(process.env.PORT, function () {
     console.log('Your app is listening on port ' + listener.address().port);
 });
