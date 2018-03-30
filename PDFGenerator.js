@@ -1,3 +1,7 @@
-export function generatePDF(data) {
-  console.log('here')
+function generatePDF(data) {
+  console.log('generating pdf')
 }
+
+module.exports = {
+  generatePDF
+};
