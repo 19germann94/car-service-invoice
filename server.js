@@ -9,8 +9,8 @@ app.use(cors({origin: '*'}));
 app.use(compression());
 app.use(express.static('src'));
 
-app.get('/', (request, response) => response.sendFile(__dirname + '/index.html'));
-app.get('/pdf', (request, response) => {
+app.get('/', (request, response) => response.sendFile(__dirname + '/src/static/index.html'));
+app.post('/pdf', (request, response) => {
   const file = fs.createReadStream('./loremipsum.pdf');
   const stat = fs.statSync('./loremipsum.pdf');
   response.setHeader('Content-Length', stat.size);
